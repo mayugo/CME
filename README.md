@@ -1,2 +1,2 @@
 # CME
-Assignatura Càlcula de Mecanismes, GEM, UdG
+Assignatura Càlcul de Mecanismes, GEM, UdG
