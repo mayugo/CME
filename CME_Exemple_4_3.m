@@ -3,15 +3,15 @@
 clear all, close all
 
 %% Dades exercici
-R = 60e-3   % mm
-m = 500e-3  % kg
-J = 100e-3/2*R^2 % kg m2
-c = 10       % Ns/m
-k1 = 1      % N/m
-k2 = 2      % N/m
+R = 60e-3           % m
+m = 500e-3          % kg
+J = 100e-3/2*R^2    % kg m2
+c = 10              % Ns/m
+k1 = 1              % N/m
+k2 = 2              % N/m
 
-x0 =0.05    % m
-M = 10e-3   % Nm
+x0 =0.05            % m
+M = 10e-3           % Nm
 
 %% Sistema equivalent
 
@@ -40,7 +40,7 @@ figure;
 plot(t1,x1,'LineWidth',1.5); hold on;
 plot(t2,x2,'LineWidth',1.5);
 
-legend('Moment inicial i amb retardat','Moment amb retard','FontSize',14);
+legend('Pretensió inicial i moment retardat','Moment amb retard','FontSize',14);
 xlabel('t [s]','FontSize',14);
 ylabel('x [m]','FontSize',14);
 
