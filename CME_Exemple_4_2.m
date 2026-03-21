@@ -1,6 +1,6 @@
 %% RESPOSTA TRANSITORIA EN CONDICIONS GENERALS NO NUL·LES
 % J.A.Mayugo, UdG, 2015
-clear all, close all
+clear, close all
 
 %% Dades exercici
 m = 108     % kg

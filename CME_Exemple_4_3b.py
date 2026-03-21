@@ -26,7 +26,7 @@ M = 10e-3           # M, moment torsor
 t_jump  = 30        # s, temps on apliquem moment
 t_final = 50        # s, temps final simulació
 
-# %%
+# %% MÈTODE NUMÈRIC EN ESPAI TEMPORAL
 # -------------------------
 # Model dinàmic
 # -------------------------
@@ -94,14 +94,14 @@ def model(m,J,R,c,k1,k2,x0,M,t_jump,t_final):
 # Simulació i gràfic
 # -------------------------
 
-t_full, x_full,v_full, Q_values = model(m,J,R,c,k1,k2,x0,M,t_jump,t_final)
+t_full1, x_full1,v_full1, Q_values = model(m,J,R,c,k1,k2,x0,M,t_jump,t_final)
 t_full2, x_full2,v_full2, Q_values = model(m*20,J*20,R,c,k1,k2,x0,M,t_jump,t_final)
 
 fig, axs = plt.subplots(3, 1, sharex=True, figsize=(8,8))
 
 # Subplot 1: Q(t)
 # -------------------------
-axs[0].plot(t_full, Q_values, linestyle='--')
+axs[0].plot(t_full1, Q_values, linestyle='--')
 axs[0].set_ylabel(r'$Q(t) \, $[N]')
 axs[0].grid(True)
 axs[0].legend([r'$Q(t) = F_0 + M(t)/r \, $[N]'],loc='lower right')
@@ -109,7 +109,7 @@ axs[0].set_ylim(0, 0.3)
 
 # Subplot 2: resposta x(t)
 # -------------------------
-axs[1].plot(t_full, x_full, label=r'Inèrcia baixa')
+axs[1].plot(t_full1, x_full1, label=r'Inèrcia baixa')
 axs[1].plot(t_full2, x_full2, label=r'Inèrcia elevada')
 axs[1].set_ylabel(r'$x\,$[m]')
 axs[1].grid(True)
@@ -118,16 +118,14 @@ axs[1].legend(loc='lower right')
 
 # Subplot 3: resposta v(t)
 # -------------------------
-axs[2].plot(t_full, v_full, label=r'Inèrcia baixa')
+axs[2].plot(t_full1, v_full1, label=r'Inèrcia baixa')
 axs[2].plot(t_full2, v_full2, label=r'Inèrcia elevada')
 axs[2].set_xlabel(r'$t\,$[s]')
 axs[2].set_ylabel(r'$\dot{x}\,$[m/s]')
 axs[2].grid(True)
 
 plt.xlim([20,t_final])
-plt.tight_layout()
-plt.show()
 
 plt.tight_layout()
-plt.savefig('CME_Exemple_4_3_SOL.pdf', bbox_inches='tight', transparent=True)
+plt.savefig('CME_Exemple_4_3_SOL1.pdf', bbox_inches='tight', transparent=True)
 plt.show()

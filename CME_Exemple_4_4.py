@@ -60,6 +60,8 @@ def CME_jou_escoces():
         [initial_position, initial_speed],
         method='RK23',
         t_eval=np.linspace(t_start, t_end, 1000))
+    
+    print(R)
 
     t = sol.t
     x = sol.y
@@ -89,7 +91,7 @@ def CME_jou_escoces():
     plt.grid()
     
     plt.tight_layout()
-    plt.savefig('CME_Exemple_4_4_SOL.pdf', bbox_inches='tight', transparent=True)
+    plt.savefig('CME_Exemple_4_4_SOL_20.pdf', bbox_inches='tight', transparent=True)
     plt.show()
 
 if __name__ == "__main__":
