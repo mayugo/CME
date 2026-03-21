@@ -23,7 +23,8 @@ for i=[1:3]
 
     x_(:,i)=subs(x,t,t_);       % posicio x(t)
     v_(:,i)=subs(x_dot,t,t_);   % velocitat v(t)
-    fr_(:,i)=x_(:,i)*k;         % força resort f_r(t)
+    fr_(:,i)=x_(:,i)*k;         % força ressort f_r(t)
+    fc_(:,i)=v_(:,i)*c(i);         % força esmorteïdor f_r(t)
 end
 
 h=figure;
@@ -47,5 +48,21 @@ plot(t_,fr_);
 legend(['c = ' num2str(c(1)) ' Ns/m'],...
        ['c = ' num2str(c(2)) ' Ns/m'],...
        ['c = ' num2str(c(3)) ' Ns/m']);
-xlabel('t [s]');ylabel('força')
-%saveas(h,'./figures/Exemple_MatLab_1plot_v.png')
+xlabel('t [s]');ylabel('força ressort [N]')
+%saveas(h,'./figures/Exemple_MatLab_1plot_fr.png')
+
+h=figure;
+plot(t_,fc_);
+legend(['c = ' num2str(c(1)) ' Ns/m'],...
+       ['c = ' num2str(c(2)) ' Ns/m'],...
+       ['c = ' num2str(c(3)) ' Ns/m']);
+xlabel('t [s]');ylabel('força esmorteïdor [N]')
+%saveas(h,'./figures/Exemple_MatLab_1plot_fc.png')
+
+h=figure;
+plot(t_,fr_ + fc_);
+legend(['c = ' num2str(c(1)) ' Ns/m'],...
+       ['c = ' num2str(c(2)) ' Ns/m'],...
+       ['c = ' num2str(c(3)) ' Ns/m']);
+xlabel('t [s]');ylabel('força a la base [N]')
+%saveas(h,'./figures/Exemple_MatLab_1plot_fc.png')

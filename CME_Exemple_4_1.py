@@ -1,18 +1,3 @@
-# ---
-# jupyter:
-#   jupytext:
-#     text_representation:
-#       extension: .py
-#       format_name: percent
-#       format_version: '1.3'
-#       jupytext_version: 1.19.1
-#   kernelspec:
-#     display_name: Python (manim)
-#     language: python
-#     name: manim
-# ---
-
-# %% colab={"base_uri": "https://localhost:8080/", "height": 976} executionInfo={"elapsed": 10147, "status": "ok", "timestamp": 1773084199968, "user": {"displayName": "Joan Andreu Mayugo Majo", "userId": "06103893660111504434"}, "user_tz": -60} id="2Aw5F2h_zrM6" outputId="10d14443-1281-4c0e-fcd4-c4ccfe419e39"
 import numpy as np
 import matplotlib.pyplot as plt
 import sympy as sp
@@ -23,8 +8,7 @@ plt.rcParams.update({
     "font.size": 14
 })
 
-# %% colab={"base_uri": "https://localhost:8080/", "height": 976} executionInfo={"elapsed": 10147, "status": "ok", "timestamp": 1773084199968, "user": {"displayName": "Joan Andreu Mayugo Majo", "userId": "06103893660111504434"}, "user_tz": -60} id="2Aw5F2h_zrM6" outputId="10d14443-1281-4c0e-fcd4-c4ccfe419e39"
-# 1. Definició de variables simbòliques
+# %% 1. Definició de variables simbòliques
 s, t = sp.symbols('s t', real=True)
 
 # Paràmetres del sistema
@@ -37,9 +21,10 @@ t_eval = np.linspace(0, 8, 1000)
 results_x = []
 results_v = []
 results_fr = []
+results_fc = []
+results_fb = []
 
-# %% colab={"base_uri": "https://localhost:8080/", "height": 976} executionInfo={"elapsed": 10147, "status": "ok", "timestamp": 1773084199968, "user": {"displayName": "Joan Andreu Mayugo Majo", "userId": "06103893660111504434"}, "user_tz": -60} id="2Aw5F2h_zrM6" outputId="10d14443-1281-4c0e-fcd4-c4ccfe419e39"
-# 2. Bucle de càlcul simbòlic i numèric
+# %% 2. Bucle de càlcul simbòlic i numèric
 for c in c_values:
     # Funció de transferència de la posició X(s)
     X_s = F_s / (m*s**2 + c*s + k)
@@ -69,9 +54,12 @@ for c in c_values:
     v_vals = v_func(t_eval)
     results_x.append(x_vals)
     results_v.append(v_vals)
-    results_fr.append(x_vals * k)
+    results_fr.append(x_vals*k)
+    results_fc.append(v_vals*c)
+    results_fb.append(x_vals*k + v_vals*c )
 
-# %% colab={"base_uri": "https://localhost:8080/", "height": 976} executionInfo={"elapsed": 10147, "status": "ok", "timestamp": 1773084199968, "user": {"displayName": "Joan Andreu Mayugo Majo", "userId": "06103893660111504434"}, "user_tz": -60} id="2Aw5F2h_zrM6" outputId="10d14443-1281-4c0e-fcd4-c4ccfe419e39"
+# %% 3. Representació respostes
+
 plt.figure(figsize=(10, 5))
 
 # Gràfica de la Posició
@@ -85,17 +73,59 @@ plt.xlim([0,8])
 plt.grid(True)
 plt.legend()
 
-# Gràfica de la Força elàstica
+# Gràfica de la Velocitat
 plt.subplot(1, 2, 2)
 for i, c in enumerate(c_values):
     plt.plot(t_eval, results_v[i], label=fr'$c = {c}\ \mathrm{{Ns/m}}$')
-# plt.title(r'Velocitat $\dot{x}(t)$')
+# plt.title(r'Força elàstica $F_r = k\,x(t)$')
 plt.xlabel(r'$t\,[s]$')
 plt.ylabel(r'$\dot{x}\,[m/s]$')
 plt.xlim([0,8])
 plt.grid(True)
-plt.legend()
+# plt.legend()
 
 plt.tight_layout()
 plt.savefig('CME_Exemple_4_1_SOL.pdf', bbox_inches='tight', transparent=True)
+plt.show()
+
+plt.figure(figsize=(10, 5))
+
+# Gràfica de la Força elàstica
+plt.subplot(1, 3, 1)
+for i, c in enumerate(c_values):
+    plt.plot(t_eval, results_fr[i], label=fr'$c = {c}\ \mathrm{{Ns/m}}$')
+# plt.title(r'Posició $x(t)$')
+plt.xlabel(r'$t\,[s]$')
+plt.ylabel(r'$F_r\,[N]$')
+plt.xlim([0,8])
+plt.ylim([-0.2,1.4])
+plt.grid(True)
+# plt.legend()
+
+# Gràfica de la Força esmorteïdor
+plt.subplot(1, 3, 2)
+for i, c in enumerate(c_values):
+    plt.plot(t_eval, results_fc[i], label=fr'$c = {c}\ \mathrm{{Ns/m}}$')
+# plt.title(r'Força esmorteïdor $F_c = c\,\dot{x}(t)$')
+plt.xlabel(r'$t\,[s]$')
+plt.ylabel(r'$F_c\,[N]$')
+plt.xlim([0,8])
+plt.ylim([-0.2,1.4])
+plt.grid(True)
+# plt.legend()
+
+# Gràfica de la Força a la base
+plt.subplot(1, 3, 3)
+for i, c in enumerate(c_values):
+    plt.plot(t_eval, results_fb[i], label=fr'$c = {c}\ \mathrm{{Ns/m}}$')
+# plt.title(r'Força a la base $F_r + F_c$')
+plt.xlabel(r'$t\,[s]$')
+plt.ylabel(r'$F_b\,[N]$')
+plt.xlim([0,8])
+plt.ylim([-0.2,1.4])
+plt.grid(True)
+# plt.legend()
+
+plt.tight_layout()
+plt.savefig('CME_Exemple_4_1_SOL2.pdf', bbox_inches='tight', transparent=True)
 plt.show()
