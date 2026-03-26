@@ -61,8 +61,6 @@ def CME_jou_escoces():
         method='RK23',
         t_eval=np.linspace(t_start, t_end, 1000))
     
-    print(R)
-
     t = sol.t
     x = sol.y
 
