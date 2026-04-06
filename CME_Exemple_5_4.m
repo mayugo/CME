@@ -99,6 +99,11 @@ function dydt = deriv(t, y, M, m, L, g, f, t_for)
     cos_theta = cos(theta);
     sin_theta = sin(theta);
 
+    % Calcul acceleracions resolent el sistema
+    % ddx*(M + m) + m*L*ddtheta*cos(theta) - m*L*theta_dot^2*sin(theta) = F
+    % L*ddtheta + ddx*cos(theta) + g*sin(theta) = 0
+    % resolvem com a sistema lineal per ddx i ddtheta
+
     % Sistema lineal
     A = [M + m, m*L*cos_theta;
          cos_theta, L];

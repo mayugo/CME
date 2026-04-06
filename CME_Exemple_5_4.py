@@ -15,7 +15,6 @@ L = 0.6
 f = 1.0
 g = 9.81
 
-
 t_max = 16
 t_for = 6
 
@@ -114,13 +113,14 @@ for ax in axs.flat:   # axs.flat recorre tots els subplots del 2x2
     ax.axvline(x=t_for, color='gray', linestyle='--', linewidth=3)
 
 plt.tight_layout()
+plt.savefig('CME_Exemple_5_4_SOL1.pdf', bbox_inches='tight', transparent=True)
 plt.show()
 
 # Plot energies
 plt.figure(figsize=(10,5))
 plt.plot(sol.t, T, label=r'Energia cinètica $T$')
 plt.plot(sol.t, V, label=r'Energia potencial $V$')
-plt.plot(sol.t, E, label=r'Energia total $T+V$', linestyle='--')
+plt.plot(sol.t, E, label=r'Energia total $T+V$', linestyle='--', linewidth=3)
 plt.axvline(x=t_for, color='gray', linestyle='--', linewidth=3)
 
 plt.xlabel(r'$t$ [s]')
@@ -128,4 +128,5 @@ plt.ylabel(r'energia [J]')
 plt.legend()
 plt.xlim([0, t_max])
 plt.grid(True)
+plt.savefig('CME_Exemple_5_4_SOL2.pdf', bbox_inches='tight', transparent=True)
 plt.show()

@@ -71,6 +71,7 @@ plt.ylabel(r'Força $f(t)$ [N]')
 plt.title(r'Força $f(t)$')
 plt.xlim([0,t_final])
 plt.grid()
+plt.savefig('CME_Exemple_5_1_SOL1.pdf', bbox_inches='tight', transparent=True)
 
 # Desplaçament del bloc x1
 plt.figure()
@@ -82,6 +83,7 @@ plt.title('Resposta x_1(t)')
 plt.legend()
 plt.xlim([0,t_final])
 plt.grid()
+plt.savefig('CME_Exemple_5_1_SOL2.pdf', bbox_inches='tight', transparent=True)
 
 # Desplaçament del bloc x2
 plt.figure()
@@ -93,6 +95,7 @@ plt.title('Resposta x_2(t)')
 plt.legend()
 plt.xlim([0,t_final])
 plt.grid()
+plt.savefig('CME_Exemple_5_1_SOL3.pdf', bbox_inches='tight', transparent=True)
 
 # Desplaçament total dels 2 blocs
 plt.figure()
@@ -104,5 +107,5 @@ plt.title('Resposta total')
 plt.legend()
 plt.xlim([0,t_final])
 plt.grid()
-
+plt.savefig('CME_Exemple_5_1_SOL4.pdf', bbox_inches='tight', transparent=True)
 plt.show()
