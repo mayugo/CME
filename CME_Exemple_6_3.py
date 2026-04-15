@@ -105,9 +105,9 @@ if zeta < 1 :
     plt.plot(t, -envolvent, '--', color = 'orange', linewidth = 1)
 plt.xlabel(r"$t$ [s]")
 plt.ylabel(r'$\theta(t)$ [rad]')
-# plt.title("Resposta analítica θ(t)")
+plt.title("Resposta analítica θ(t)")
 plt.grid()
-plt.savefig('CME_Exemple_4_1_SOL2.pdf', bbox_inches='tight', transparent=True)
+# plt.savefig('CME_Exemple_6_3_SOL1.pdf', bbox_inches='tight', transparent=True)
 plt.show()
 
 # %% Mètode 2: numèric
@@ -134,5 +134,5 @@ plt.xlabel(r"$t$ [s]")
 plt.ylabel(r'$\theta(t)$ [rad]')
 plt.title("Resposta numèrica θ(t)")
 plt.grid()
-plt.savefig('CME_Exemple_4_1_SOL2.pdf', bbox_inches='tight', transparent=True)
+# plt.savefig('CME_Exemple_6_3_SOL2.pdf', bbox_inches='tight', transparent=True)
 plt.show()

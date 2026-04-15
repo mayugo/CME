@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import sympy as sp
 
 plt.rcParams.update({
-    "text.usetex": True,      # Utilitza LaTeX per a tot el text
+    # "text.usetex": True,      # Utilitza LaTeX per a tot el text
     "font.family": "serif",   # Fonts serif com LaTeX
     "font.size": 14
 })

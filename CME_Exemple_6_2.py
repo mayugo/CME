@@ -2,6 +2,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.signal import StateSpace, lsim
 
+plt.rcParams.update({
+    "font.family": "serif",   # Fonts serif com LaTeX
+    "font.size": 14})
+
 # %%
 # Paràmetres
 
@@ -36,10 +40,11 @@ x2 = X * np.exp(-alpha*t) * np.sin(omg_d*t + psi_d)
 # Gràfica analítica
 plt.figure()
 plt.plot(t, x1, label='x1')
-plt.plot(t, Xt, '--', label='envolvent')
+plt.plot(t,  Xt, '--', color='orange', label='+ envolvent')
 plt.xlabel('Temps [s]')
 plt.ylabel('x(t) [m]')
 plt.grid()
+# plt.savefig('CME_Exemple_6_2_SOL.pdf', bbox_inches='tight', transparent=True)
 
 # %%
 # Espai d’estat
@@ -64,5 +69,4 @@ plt.xlabel('Temps [s]')
 plt.ylabel('x(t) [m]')
 plt.title('Resposta amb espai d’estat')
 plt.grid()
-
 plt.show()
