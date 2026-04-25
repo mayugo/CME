@@ -1,6 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+plt.rcParams.update({
+    "text.usetex": True,      # Utilitza LaTeX per a tot el text
+    "font.family": "serif",   # Fonts serif com LaTeX
+    "font.size": 14})
+
 # ------------------------
 # DADES
 # ------------------------
@@ -17,11 +22,11 @@ t = np.linspace(0, t_f, 1000)
 # ------------------------
 # MOVIMENTS
 # ------------------------
-x1 = A * phi1[0] * np.cos(omega1 * t)
-theta1 = A * phi1[1] * np.cos(omega1 * t)
+x11 = A * phi1[0] * np.cos(omega1 * t)
+x21 = A * phi1[1] * np.cos(omega1 * t)
 
-x2 = A * phi2[0] * np.cos(omega2 * t)
-theta2 = A * phi2[1] * np.cos(omega2 * t)
+x12 = A * phi2[0] * np.cos(omega2 * t)
+x22 = A * phi2[1] * np.cos(omega2 * t)
 
 
 # ------------------------
@@ -53,28 +58,30 @@ axs[0].text(0.5, -0.25, '(a) Vectors propis.',
             ha='center')
 
 # --- (2) Mode 1 temporal
-axs[1].plot(t, x1, label=r'$x(t)$')
-axs[1].plot(t, theta1, label=r'$\theta(t)$')
+axs[1].plot(t, x11, label=r'$x_1(t)$')
+axs[1].plot(t, x21, label=r'$x_2(t)$')
+axs[1].axhline(0)
 axs[1].grid()
 axs[1].legend(loc='lower right')
 axs[1].set_xlim([0,t_f])
 axs[1].set_ylim([-1,1])
 axs[1].set_xlabel('t [s]')
 
-axs[1].text(0.5, -0.25, '(b) Resposa en mode 1.',
+axs[1].text(0.5, -0.25, r"(b) Resposa en mode 1 a $\omega_1 =$" + str(omega1) + r" rad/s.",
             transform=axs[1].transAxes,
             ha='center')
 
 # --- (3) Mode 2 temporal
-axs[2].plot(t, x2, label=r'$x(t)$')
-axs[2].plot(t, theta2, label=r'$\theta(t)$')
+axs[2].plot(t, x12, label=r'$x_1(t)$')
+axs[2].plot(t, x22, label=r'$x_2(t)$')
+axs[2].axhline(0)
 axs[2].grid()
 axs[2].legend(loc='lower right')
 axs[2].set_xlim([0,t_f])
 axs[2].set_ylim([-1,1])
 axs[2].set_xlabel('t [s]')
 
-axs[2].text(0.5, -0.25, '(c) Resposa en mode 2.',
+axs[2].text(0.5, -0.25, r"(c) Resposa en mode 2 a $\omega_2 =$" + str(omega2) + r" rad/s.",
             transform=axs[2].transAxes,
             ha='center')
 
