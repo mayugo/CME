@@ -58,12 +58,11 @@ axs[0].set_xlim([400, 800])
 axs[0].set_ylim([0, 10])
 axs[0].grid()
 
-axs[1].plot(omg, Theta_omg * 180/np.pi - 360) # Convertim a graus i ajustem el desfasament
+axs[1].plot(omg, Theta_omg * 180/np.pi) # Convertim a graus el desfasament
 axs[1].axvline(omega_r, color='orange', lw=3, ls='--', label=rf'\omega = {omega_r:.1f}$ rad/s')
 axs[1].set_xlabel(r"$\omega$ [rad/s]")
 axs[1].set_ylabel(r"Desfase $\phi(j\omega)$ [$^\circ$]")
 axs[1].set_xlim([400, 800])
-axs[1].set_ylim([-180, 0])
 axs[1].grid()
 
 plt.tight_layout()
