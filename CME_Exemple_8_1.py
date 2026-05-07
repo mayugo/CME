@@ -46,7 +46,7 @@ RT_vec = np.sqrt(1 + (2*zeta*Omega_vec)**2) / \
 # -----------------------------
 # PLOT TRANSMISSIBILITAT
 # -----------------------------
-plt.figure(figsize=(8,4))
+plt.figure(figsize=(8,3.5))
 plt.plot(Omega_vec, RT_vec, linewidth=2,  label=r'RT$(\Omega)$')
 plt.axhline(RT, color='0.6',  linewidth=2,  label='RT objectiu')
 plt.axvline(Omega, color='0.6', linestyle='--', linewidth=3, label=r'$\Omega$ disseny')
@@ -68,7 +68,7 @@ F0 = 1000
 
 x = (F0/k) * np.sin(omega*t) / np.sqrt((1 - (omega/omega_n)**2)**2 + (2*zeta*(omega/omega_n))**2)
 
-plt.figure(figsize=(8,4))
+plt.figure(figsize=(8,3.5))
 plt.plot(t, x*1e3, linewidth=2, label='resposta dinàmica [mm]')
 plt.plot(t, (F0/k)*np.sin(omega*t)*1e3, linewidth=2, label=r'quasi-estàtica $f(t)/k$ [mm]')
 plt.xlim([0, 0.1])
